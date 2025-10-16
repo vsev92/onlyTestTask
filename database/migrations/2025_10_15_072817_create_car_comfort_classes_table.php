@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions_models', function (Blueprint $table) {
+        Schema::create('car_comfort_classes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('position_id')->constrained('staff_positions')->onDelete('cascade');
-            $table->foreignId('model_id')->constrained('car_models')->onDelete('cascade');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions_models');
+        Schema::dropIfExists('car_comfort_classes');
     }
 };
