@@ -12,4 +12,15 @@ class CarComfortClass extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function carModels()
+    {
+        return $this->hasMany(CarModel::class);
+    }
+
+    public function forStaffPositions()
+    {
+        return $this->belongsToMany(StaffPosition::class, 'positions_car_classes', 'car_comfort_class_id', 'position_id')
+            ->withTimestamps();
+    }
 }

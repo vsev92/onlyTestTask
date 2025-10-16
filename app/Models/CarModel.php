@@ -13,4 +13,15 @@ class CarModel extends Model
         'model',
         'car_comfort_class_id',
     ];
+
+
+    public function comfortClass()
+    {
+        return $this->belongsTo(CarComfortClass::class, 'car_comfort_class_id');
+    }
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
 }

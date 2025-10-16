@@ -13,4 +13,14 @@ class PositionsCarClass extends Model
         'position_id',
         'car_comfort_class_id',
     ];
+
+    public function position()
+    {
+        return $this->belongsTo(StaffPosition::class);
+    }
+
+    public function carClass()
+    {
+        return $this->belongsTo(CarComfortClass::class, 'car_comfort_class_id');
+    }
 }

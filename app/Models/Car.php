@@ -14,4 +14,20 @@ class Car extends Model
         'car_model_id',
         'driver_id',
     ];
+
+
+    public function carModel()
+    {
+        return $this->belongsTo(CarModel::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

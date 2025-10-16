@@ -15,4 +15,14 @@ class Reservation extends Model
         'begin_reservation',
         'end_reservation',
     ];
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
 }

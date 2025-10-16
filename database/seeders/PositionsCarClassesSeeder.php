@@ -12,24 +12,48 @@ class PositionsCarClassesSeeder extends Seeder
 {
     public function run(): void
     {
-        PositionsCarClass::factory()->create([
-            'position_id' => StaffPosition::where('name', 'Директор')->first()->id,
-            'car_comfort_class_id' => CarComfortClass::where('name', 'Люкс')->first()->id,
-        ]);
 
-        PositionsCarClass::factory()->create([
-            'position_id' => StaffPosition::where('name', 'Водитель')->first()->id,
-            'car_comfort_class_id' => CarComfortClass::where('name', 'Эконом')->first()->id,
-        ]);
+        $director = StaffPosition::where('name', 'Директор')->first();
+        $driver   = StaffPosition::where('name', 'Водитель')->first();
+        $engineer = StaffPosition::where('name', 'Инженер')->first();
+        $worker   = StaffPosition::where('name', 'Рабочий')->first();
 
-        PositionsCarClass::factory()->create([
-            'position_id' => StaffPosition::where('name', 'Инженер')->first()->id,
-            'car_comfort_class_id' => CarComfortClass::where('name', 'Бизнес')->first()->id,
-        ]);
+        $classes = CarComfortClass::all();
 
-        PositionsCarClass::factory()->create([
-            'position_id' => StaffPosition::where('name', 'Рабочий')->first()->id,
-            'car_comfort_class_id' => CarComfortClass::where('name', 'Стандарт')->first()->id,
-        ]);
+        $classes->each(function ($class) use ($director) {
+            PositionsCarClass::factory()->create([
+                'position_id' => $director->id,
+                'car_comfort_class_id' => $class->id,
+            ]);
+        });
+
+        $classes->each(function ($class) use ($driver) {
+            PositionsCarClass::factory()->create([
+                'position_id' => $driver->id,
+                'car_comfort_class_id' => $class->id,
+            ]);
+        });
+
+        $classesForEngineer = $classes->reject(function ($class) {
+            return $class->name === 'Люкс';
+        });
+
+        $classesForEngineer->each(function ($class) use ($engineer) {
+            PositionsCarClass::factory()->create([
+                'position_id' => $engineer->id,
+                'car_comfort_class_id' => $class->id,
+            ]);
+        });
+
+        $classesForWorker = $classesForEngineer->reject(function ($class) {
+            return $class->name === 'Бизнес';
+        });
+
+        $classesForWorker->each(function ($class) use ($worker) {
+            PositionsCarClass::factory()->create([
+                'position_id' => $worker->id,
+                'car_comfort_class_id' => $class->id,
+            ]);
+        });
     }
 }
