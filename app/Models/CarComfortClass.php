@@ -18,9 +18,13 @@ class CarComfortClass extends Model
         return $this->hasMany(CarModel::class);
     }
 
-    public function forStaffPositions()
+    public function positions()
     {
-        return $this->belongsToMany(StaffPosition::class, 'positions_car_classes', 'car_comfort_class_id', 'position_id')
-            ->withTimestamps();
+        return $this->belongsToMany(
+            StaffPosition::class,
+            'positions_car_classes',
+            'car_comfort_class_id',
+            'position_id'
+        );
     }
 }

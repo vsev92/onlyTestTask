@@ -21,7 +21,7 @@ class ReservationsSeeder extends Seeder
 
         $today = Carbon::today();
         $startTime = $today->copy()->setHour(8)->setMinute(0);
-        $endTime = $today->copy()->setHour(11)->setMinute(0);
+        $endTime = $today->copy()->setHour(9)->setMinute(0);
 
         foreach ($cars as $car) {
             Reservation::factory()->create([

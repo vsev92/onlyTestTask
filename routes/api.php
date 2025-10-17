@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CarReservationController;
+use App\Http\Controllers\Api\CarReservationController;
 
-Route::middleware('auth:sanctum')->get('/cars', [CarReservationController::class, 'getCars']);
+//Route::middleware('auth:sanctum')->get('/available-cars', [CarReservationController::class, 'availableCars']);
+Route::get('/available-cars', [CarReservationController::class, 'availableCars']);
