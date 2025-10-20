@@ -5,6 +5,7 @@
 git clone git@github.com:vsev92/onlyTestTask.git
 cd  onlyTestTask
 composer install
+cp .env.example .env
 ```
 
 ## to run tests
