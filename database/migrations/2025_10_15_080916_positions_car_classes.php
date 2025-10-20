@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('position_id')->constrained('staff_positions')->onDelete('cascade');
             $table->foreignId('car_comfort_class_id')->constrained('car_comfort_classes')->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['position_id', 'car_comfort_class_id']);
         });
     }
 

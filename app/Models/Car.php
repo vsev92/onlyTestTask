@@ -15,6 +15,7 @@ class Car extends Model
         'driver_id',
     ];
 
+    protected $casts = ['driver_id' => 'integer', 'car_model_id' => 'integer'];
 
     public function carModel()
     {

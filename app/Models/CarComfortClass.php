@@ -13,6 +13,8 @@ class CarComfortClass extends Model
         'name',
     ];
 
+    protected $casts = ['id' => 'integer'];
+
     public function carModels()
     {
         return $this->hasMany(CarModel::class);
@@ -25,6 +27,6 @@ class CarComfortClass extends Model
             'positions_car_classes',
             'car_comfort_class_id',
             'position_id'
-        );
+        )->withTimestamps();
     }
 }

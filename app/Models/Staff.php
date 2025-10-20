@@ -16,6 +16,11 @@ class Staff extends Model
         'position_id',
     ];
 
+    protected $casts = [
+        'user_id' => 'integer',
+        'position_id' => 'integer',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -54,7 +59,7 @@ class Staff extends Model
         return $this->comfortClasses()->pluck('car_comfort_classes.id');
     }
 
-    public function avaibleCarModelsIds(Collection $comfortClassesIds): Collection
+    public function availableCarModelIds(Collection $comfortClassesIds): Collection
     {
         return CarModel::whereIn(
             'car_comfort_class_id',

@@ -13,6 +13,6 @@ class CarReservationController extends Controller
     {
         $data = $request->validated();
         $service = new CarReservationService();
-        return $service->getAvaibleCars($data);
+        return $service->getAvailableCars($data);
     }
 }

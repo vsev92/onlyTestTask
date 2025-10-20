@@ -16,6 +16,11 @@ class Reservation extends Model
         'end_reservation',
     ];
 
+    protected $casts = [
+        'begin_reservation' => 'datetime',
+        'end_reservation' => 'datetime',
+    ];
+
     public function staff()
     {
         return $this->belongsTo(Staff::class);
